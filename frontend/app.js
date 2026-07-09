@@ -4,6 +4,11 @@ const completedCount = document.getElementById('completedCount');
 const waitingCount = document.getElementById('waitingCount');
 const simStatusText = document.getElementById('simStatusText');
 
+// একদম শুরুতে থাকা Variable-গুলোর নিচে এই নতুন ৩টি লাইন যুক্ত করুন:
+const logBoxContainer = document.getElementById('logBoxContainer');
+const logBox = document.getElementById('logBox');
+let logInterval = null;
+
 let isSimulating = false;
 const API_BASE_URL = 'https://ai-voice-analysis-dashboard.onrender.com';
 
@@ -33,6 +38,22 @@ async function fetchData() {
         console.error("Error fetching data:", error);
     }
 }
+
+
+
+// লগ মেসেজগুলোর একটি তালিকা
+const logMessages = [
+    "Checking for new audio in Hugging Face dataset...",
+    "Downloading customer call audio...",
+    "Passing voice record to Gemini AI...",
+    "AI is reading and processing audio data...",
+    "Analyzing tone, call quality, and keywords...",
+    "Extracting full transcript...",
+    "Saving AI report to Supabase database...",
+    "Process complete! Waiting for the next call..."
+];
+
+
 
 // টেবিলে ডাটা দেখানোর ফাংশন
 function displayCallsTable(calls) {
@@ -78,11 +99,52 @@ function updateButtonUI() {
         toggleBtn.textContent = "⏹ Stop Live Simulation";
         toggleBtn.className = "btn-stop";
         simStatusText.innerHTML = "🟢 RUNNING";
+        if (!logInterval) startSimulatedLogs(); // লগ শুরু করবে
     } else {
         toggleBtn.textContent = "▶ Start Live Simulation";
         toggleBtn.className = "btn-start";
         simStatusText.innerHTML = "🔴 OFF";
+        stopSimulatedLogs(); // লগ বন্ধ করবে
     }
+}
+
+// লগ বক্সে লেখা যুক্ত করার ফাংশন
+function addLog(message) {
+    const time = new Date().toLocaleTimeString();
+    logBox.innerHTML += `<p>[${time}] > ${message}</p>`;
+    logBox.scrollTop = logBox.scrollHeight; // স্বয়ংক্রিয়ভাবে নিচে স্ক্রল করবে
+}
+
+// লগ এনিমেশন শুরু করার ফাংশন
+function startSimulatedLogs() {
+    logBoxContainer.style.display = 'block';
+    let step = 0;
+    
+    logBox.innerHTML = '<p>> Simulation Engine Started...</p>';
+    
+    logInterval = setInterval(() => {
+        if (!isSimulating) {
+            clearInterval(logInterval);
+            return;
+        }
+        
+        addLog(logMessages[step]);
+        step++;
+        
+        // সব মেসেজ দেখানো হলে আবার প্রথম থেকে শুরু করবে
+        if (step >= logMessages.length) {
+            step = 0; 
+        }
+    }, 4500); // প্রতি ৪.৫ সেকেন্ড পরপর একটি নতুন লগ আসবে
+}
+
+// লগ বন্ধ করার ফাংশন
+function stopSimulatedLogs() {
+    if (logInterval) {
+        clearInterval(logInterval);
+        logInterval = null;
+    }
+    addLog("Simulation stopped by user. Engine turned off.");
 }
 
 function downloadAllReportsPDF() {

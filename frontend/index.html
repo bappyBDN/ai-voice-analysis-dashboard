@@ -26,11 +26,23 @@
                 <h2 id="simStatusText">🔴 OFF</h2>
             </div>
         </div>
+        <div class="info-note">
+            <strong>💡 What does this do?</strong> This button triggers our AI engine to fetch a real customer support call, process the audio through Gemini AI, and instantly extract insights, transcript, and ratings.
+        </div>
 
         <div class="controls">
             <button id="toggleBtn" class="btn-start" onclick="toggleSimulation()">▶ Start Live Simulation</button>
             <button class="btn-pdf" onclick="downloadAllReportsPDF()">📄 Download PDF Report</button>
         </div>
+
+        <div id="logBoxContainer" class="log-box-container" style="display: none;">
+            <h3>⚙️ Live Processing Logs</h3>
+            <div id="logBox" class="log-box">
+                <p>> System ready...</p>
+            </div>
+        </div>
+
+        
 
         <div id="reportData">
             <h2>Recent Call Reports</h2>
