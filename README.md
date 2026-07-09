@@ -1,5 +1,5 @@
 # Real-Time AI Call Center Analytics Dashboard
-![App Dashboard Preview](https://raw.githubusercontent.com/bappyBDN/ai-voice-analysis-dashboard/main/Screenshot 2026-07-09 203746.png)
+![App Dashboard Preview](https://raw.githubusercontent.com/bappyBDN/ai-voice-analysis-dashboard/Screenshot 2026-07-09 203746.png)
 
 A full-stack, production-ready AI SaaS application that performs real-time audio analysis of customer support calls using **Google Gemini AI** and **Hugging Face Datasets**, with data persistence managed via **Supabase**.
 
