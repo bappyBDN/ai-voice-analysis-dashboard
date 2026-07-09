@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pro AI Call Assessment</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+
+    <div class="container">
+        <h1>AI Call Analytics Dashboard</h1>
+        
+        <div class="stats-board">
+            <div class="stat-card blue">
+                <h3>Total Completed</h3>
+                <h2 id="completedCount">0</h2>
+            </div>
+            <div class="stat-card orange">
+                <h3>Pending / Waiting</h3>
+                <h2 id="waitingCount">0</h2>
+            </div>
+            <div class="stat-card status">
+                <h3>Simulation Status</h3>
+                <h2 id="simStatusText">🔴 OFF</h2>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button id="toggleBtn" class="btn-start" onclick="toggleSimulation()">▶ Start Live Simulation</button>
+            <button class="btn-pdf" onclick="downloadAllReportsPDF()">📄 Download PDF Report</button>
+        </div>
+
+        <div id="reportData">
+            <h2>Recent Call Reports</h2>
+            <table class="report-table">
+                <thead>
+                    <tr>
+                        <th>Date & Time</th>
+                        <th>Rating</th>
+                        <th>Quality</th>
+                        <th>Tone</th>
+                        <th>Transcript & Keywords</th>
+                    </tr>
+                </thead>
+                <tbody id="callList">
+                    <tr><td colspan="5" style="text-align:center;">Loading reports...</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

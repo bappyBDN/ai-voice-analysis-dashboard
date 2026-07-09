@@ -1,0 +1,7 @@
+# Ignore Environment and Cache
+backend/env/
+backend/__pycache__/
+.env
+
+# Ignore Audio Files
+*.wav
