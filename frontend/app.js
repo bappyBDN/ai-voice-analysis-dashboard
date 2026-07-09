@@ -5,12 +5,13 @@ const waitingCount = document.getElementById('waitingCount');
 const simStatusText = document.getElementById('simStatusText');
 
 let isSimulating = false;
+const API_BASE_URL = 'https://ai-voice-analysis-dashboard.onrender.com';
 
 // ডাটা এবং স্ট্যাটাস আনার ফাংশন
 async function fetchData() {
     try {
         // Stats কল করা
-        const statsRes = await fetch('http://127.0.0.1:8000/api/stats');
+        const statsRes = await fetch(`${API_BASE_URL}/api/stats`);
         const stats = await statsRes.json();
         
         completedCount.innerText = stats.completed;
@@ -20,7 +21,7 @@ async function fetchData() {
         updateButtonUI();
 
         // Calls ডাটা কল করা
-        const callsRes = await fetch('http://127.0.0.1:8000/api/calls');
+        const callsRes = await fetch(`${API_BASE_URL}/api/calls`);
         const callData = await callsRes.json();
         
         if (callData.data && callData.data.length > 0) {
@@ -63,7 +64,7 @@ function displayCallsTable(calls) {
 // সিমুলেশন টগল ফাংশন
 async function toggleSimulation() {
     try {
-        const response = await fetch('http://127.0.0.1:8000/api/simulation/toggle', { method: 'POST' });
+        const response = await fetch(`${API_BASE_URL}/api/simulation/toggle`, { method: 'POST' });
         const data = await response.json();
         isSimulating = data.is_running;
         updateButtonUI();
