@@ -1,4 +1,5 @@
 # Real-Time AI Call Center Analytics Dashboard
+![System Architecture](Screenshot 2026-07-09 203746.png)
 
 A full-stack, production-ready AI SaaS application that performs real-time audio analysis of customer support calls using **Google Gemini AI** and **Hugging Face Datasets**, with data persistence managed via **Supabase**.
 
