@@ -2,6 +2,11 @@
 
 > A production-ready AI-powered SaaS application that performs **real-time customer support call analysis** using **Google Gemini AI**, **Hugging Face Datasets**, and **Supabase**, providing automated sentiment analysis, quality scoring, keyword extraction, and live business analytics through an interactive dashboard.
 
+**Youtube video**
+
+https://youtube.com/shorts/MPhMnUPrWxw?si=Zc3q8nDwKqirktbd
+
+
 ---
 **Live Demo**
 
